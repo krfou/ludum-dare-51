@@ -17,8 +17,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-height = 44.0
+[sub_resource type="CircleShape2D" id=2]
+radius = 31.0
 
 [node name="Dog" type="Area2D"]
 script = ExtResource( 2 )
@@ -26,12 +26,13 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 300
+collision_offset = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
 shape = SubResource( 2 )
+
+[connection signal="area_entered" from="." to="." method="_on_Dog_area_entered"]

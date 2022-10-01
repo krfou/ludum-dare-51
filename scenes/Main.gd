@@ -31,6 +31,6 @@ func spawn_sheeps():
 		$Sheeps.add_child(s)
 		s.screensize = screensize
 		s.position = Vector2(
-			rand_range(0, screensize.x),
-			rand_range(0, screensize.y)
+			rand_range(100, screensize.x - 100),
+			rand_range(100, screensize.y - 100)
 		)
