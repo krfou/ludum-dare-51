@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/dog/extra/dog_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/dog/running/dog_running_3.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Dog.gd" type="Script" id=2]
-[ext_resource path="res://assets/dog/extra/dog_sit.png" type="Texture" id=3]
+[ext_resource path="res://assets/dog/sit/dog_sitting_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/dog/running/dog_running_4.png" type="Texture" id=4]
+[ext_resource path="res://assets/dog/running/dog_running_5.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
+resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "default",
-"speed": 5.0
+"name": "run",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -31,6 +34,9 @@ collision_offset = 50
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
+animation = "run"
+frame = 1
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

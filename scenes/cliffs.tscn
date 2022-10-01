@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/background/image.png" type="Texture" id=1]
+[ext_resource path="res://scenes/cliffs.gd" type="Script" id=2]
+
+[node name="Cliffs" type="Area2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+use_parent_material = true
+position = Vector2( 1, 1 )
+scale = Vector2( 0.996206, 1.24247 )
+polygon = PoolVector2Array( 33.1257, 6.43879, -0.841583, 19.4355, 0, 128, 82, 114, 223, 162, 318, 148, 474, 164, 498.893, 98.9964, 522.984, 37.8279, 486.847, 10.463, 444.687, 32.1939, 391.485, 46.6812, 298.131, 16.9018, 214.815, 58.7539 )
+one_way_collision_margin = 0.0
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+position = Vector2( -1.00381, -0.804849 )
+scale = Vector2( 0.842368, 0.804849 )
+texture = ExtResource( 1 )
+texture_scale = Vector2( 1.1, 1 )
+texture_rotation_degrees = -16.2
+polygon = PoolVector2Array( 2.38419e-07, 9.53674e-07, 2, 115, 2.38419e-07, 161, 466, 252, 603, 113, 628, 36, 583, -2, 464, 49, 352, 8, 259, 57, 44, -2 )
+
+[connection signal="area_entered" from="." to="." method="_on_Cliffs_area_entered"]

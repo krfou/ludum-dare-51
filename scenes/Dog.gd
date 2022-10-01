@@ -10,8 +10,6 @@ signal spook
 
 func get_input():
 	velocity = Vector2.ZERO
-	if not velocity:
-		$AnimatedSprite.animation = "sit"
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_right"):
@@ -23,7 +21,9 @@ func get_input():
 	if velocity.length() > 0:
 		_move_collision_in_direction(velocity)
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.animation = "default"
+		$AnimatedSprite.animation = "run"
+	else:
+		$AnimatedSprite.animation = "sit"
 	if velocity.x < 0:
 		$AnimatedSprite.flip_h = true
 	else:
@@ -41,12 +41,12 @@ func start(pos):
 
 
 func _ready():
-	var texture = $AnimatedSprite.frames.get_frame("default", 0)
+	var texture = $AnimatedSprite.frames.get_frame("run", 0)
 	texture_size = texture.get_size()
 
 func _on_Dog_area_entered(area:Area2D):
 	if area.is_in_group("sheeps"):
-		area.is_scared(position, speed)
+		area.is_scared(position)
 		emit_signal("spook")
 
 func _move_collision_in_direction(direction: Vector2):
