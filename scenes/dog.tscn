@@ -1,3 +1,37 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
 
-[node name="dog" type="Area2D"]
+[ext_resource path="res://assets/dog/extra/dog_2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Dog.gd" type="Script" id=2]
+[ext_resource path="res://assets/dog/extra/dog_sit.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "sit",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 44.0
+
+[node name="Dog" type="Area2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 300
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "sit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 2 )
