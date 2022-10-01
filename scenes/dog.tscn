@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="dog" type="Area2D"]
