@@ -107,3 +107,6 @@ func _ready():
 	var tween = get_node("Tween")
 	tween.interpolate_property(sprite, "scale", scale, Vector2.ZERO, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(sprite, "position", Vector2.ZERO, position, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+
+func _on_Sheep_sheep_death():
+	pass

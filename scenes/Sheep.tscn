@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/sheep/leap/version 2/sheep_leap_2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Sheep.gd" type="Script" id=2]
-[ext_resource path="res://assets/sheep/extra/sheep_dead.png" type="Texture" id=3]
 [ext_resource path="res://assets/sheep/leap/version 2/sheep_leap_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/sheep/eat/sheep_eat_2.png" type="Texture" id=5]
 [ext_resource path="res://assets/sheep/eat/sheep_eat_6.png" type="Texture" id=6]
@@ -13,13 +12,17 @@
 [ext_resource path="res://assets/sheep/eat/sheep_eat_4.png" type="Texture" id=11]
 [ext_resource path="res://assets/sheep/eat/sheep_eat_5.png" type="Texture" id=12]
 [ext_resource path="res://assets/sheep/fall/sheep_fall_.png" type="Texture" id=13]
+[ext_resource path="res://assets/sheep/dead by car/sheep_road_death_4.png" type="Texture" id=14]
+[ext_resource path="res://assets/sheep/dead by car/sheep_road_death_14.png" type="Texture" id=15]
+[ext_resource path="res://assets/sheep/dead by car/sheep_road_death_3.png" type="Texture" id=16]
+[ext_resource path="res://assets/sheep/dead by car/sheep_road_death_1.png" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 15 ) ],
+"loop": false,
 "name": "dead",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
