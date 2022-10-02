@@ -39,7 +39,6 @@ collision_offset = 50
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -56,3 +55,4 @@ scale = Vector2( 1, 1.5 )
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="." to="." method="_on_Dog_area_entered"]
+[connection signal="dog_death" from="DogLife" to="." method="_on_DogLife_dog_death"]

@@ -58,3 +58,8 @@ func fall():
 	$AnimatedSprite.animation = "sit"
 	tween.start()
 	set_process(false)
+
+
+func _on_DogLife_dog_death():
+	var main = get_node("/root/Main")
+	main.dog_is_alive = false
