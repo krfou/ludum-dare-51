@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sheepdogsimulator.mp3-76ef4ef8044be5fddf7bdab2d0c98e85.mp3str"
+
+[deps]
+
+source_file="res://assets/sheepdogsimulator.mp3"
+dest_files=[ "res://.import/sheepdogsimulator.mp3-76ef4ef8044be5fddf7bdab2d0c98e85.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -40,3 +40,5 @@ func _ready():
 func _on_Car_area_entered(area: Area2D):
 	if area.is_in_group("sheeps"):
 		area.die()
+	if area.is_in_group("dogs"):
+		area.fall()

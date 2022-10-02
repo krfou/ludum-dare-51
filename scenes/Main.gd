@@ -14,6 +14,7 @@ export (int) var playtime
 var score
 var screensize
 var playing = false
+var dead_sheeps = 0
 
 func _ready():
 	randomize()
@@ -39,6 +40,7 @@ func spawn_sheeps():
 	for _i in range(0, sheep_number):
 		var s = Sheep.instance()
 		$Sheeps.add_child(s)
+		s.connect("sheep_death", self, "_on_Sheep_sheep_death")
 		s.screensize = screensize
 		s.position = Vector2(
 			rand_range(100, screensize.x - 100),
@@ -57,3 +59,9 @@ func spawn_rigid_sheeps():
 
 func _on_GameTimer_timeout():
 	$RedCar.lets_go()
+
+
+func _on_Sheep_sheep_death():
+	var dead_counter_display = get_node("/root/Main/RichTextLabel")
+	dead_sheeps += 1
+	dead_counter_display.text = str(sheep_number - dead_sheeps) + " remaining sheeps"

@@ -7,16 +7,15 @@ var velocity := Vector2()
 var screensize := Vector2()
 var texture_size := Vector2()
 
-var dead_sheeps: int
-
 var is_alive := true
 var is_running_away := false
+
+signal sheep_death
 
 # position du mouton moins position du chien dans vecteur
 
 onready var move_timer := $MoveTimer as Timer
 onready var sprite := get_node("AnimatedSprite")
-onready var dead_counter_display := get_node("/root/Main/RichTextLabel")
 
 
 func is_scared(dog_position: Vector2) -> void:
@@ -84,19 +83,18 @@ func _run_away(delta: float):
 
 func die():
 	$AnimatedSprite.animation = "dead"
+	$CollisionShape2D.set_deferred("disabled", true)
 	self.is_alive = false
-	dead_sheeps -= 1
-	print(dead_sheeps)
-	dead_counter_display.text = str(dead_sheeps)
+	emit_signal("sheep_death")
 
 func fall():
 	$AnimatedSprite.animation = "fall"
 	var current_scale = self.scale.x
 	$Tween.start()
+	$CollisionShape2D.set_deferred("disabled", true)
 	self.is_alive = false
-	dead_sheeps -= 1
-	print(dead_sheeps)
-	dead_counter_display.text = str(dead_sheeps)
+	emit_signal("sheep_death")
+
 
 func _ready():
 	position = Vector2(200, 200)
@@ -109,7 +107,3 @@ func _ready():
 	var tween = get_node("Tween")
 	tween.interpolate_property(sprite, "scale", scale, Vector2.ZERO, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(sprite, "position", Vector2.ZERO, position, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	dead_sheeps = 40
-
-func count_dead_sheep():
-	dead_counter_display.text = str(dead_sheeps)
