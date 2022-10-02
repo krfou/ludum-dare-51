@@ -20,7 +20,7 @@ playtime = 50
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
-stretch_mode = 2
+expand = true
 
 [node name="Road" parent="." instance=ExtResource( 7 )]
 position = Vector2( 455, 13 )
@@ -31,11 +31,11 @@ scale = Vector2( 0.4, 0.5 )
 position = Vector2( 157, 360 )
 rotation = -0.34383
 
-[node name="Dog" parent="." instance=ExtResource( 1 )]
-
 [node name="Sheeps" type="Node" parent="."]
 
 [node name="RigidSheeps" type="Node" parent="."]
+
+[node name="Dog" parent="." instance=ExtResource( 1 )]
 
 [node name="DogStart" type="Position2D" parent="."]
 position = Vector2( 180, 100 )
@@ -45,6 +45,9 @@ wait_time = 10.0
 
 [node name="RedCar" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RedCarStartGo" type="Position2D" parent="RedCar"]
 position = Vector2( 614, -45 )
@@ -57,3 +60,10 @@ position = Vector2( -49, 296 )
 
 [node name="RedCarArrivedReturn" type="Position2D" parent="RedCar"]
 position = Vector2( 642, -20 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 298.0
+margin_right = 375.0
+margin_bottom = 72.0
+
+[node name="Tween" type="Tween" parent="."]

@@ -28,7 +28,7 @@ func new_game():
 	$Dog.start($DogStart.position)
 	$Dog.show()
 
-	$GameTimer.wait_time = 5 # à remetre a 10
+	$GameTimer.wait_time = 10 # à remetre a 10
 	$GameTimer.connect("timeout", self, "_on_GameTimer_timeout")
 	$GameTimer.start()
 	spawn_sheeps()

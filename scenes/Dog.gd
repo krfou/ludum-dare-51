@@ -6,7 +6,7 @@ var velocity := Vector2()
 var screensize := Vector2()
 var texture_size := Vector2()
 
-signal spook
+onready var tween := get_node("Tween")
 
 func get_input():
 	velocity = Vector2.ZERO
@@ -43,11 +43,18 @@ func start(pos):
 func _ready():
 	var texture = $AnimatedSprite.frames.get_frame("run", 0)
 	texture_size = texture.get_size()
+	var sprite = get_node("AnimatedSprite")
+
+	tween.interpolate_property(sprite, "scale", scale, Vector2.ZERO, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
 func _on_Dog_area_entered(area:Area2D):
 	if area.is_in_group("sheeps"):
 		area.is_scared(position)
-		emit_signal("spook")
 
 func _move_collision_in_direction(direction: Vector2):
 	$CollisionShape2D.position = direction * collision_offset
+
+func fall():
+	$AnimatedSprite.animation = "sit"
+	tween.start()
+	set_process(false)

@@ -17,12 +17,12 @@ var is_arrived_to_top_right := true
 func lets_go():
 	#if not is_arrived_to_bottom_left and is_arrived_to_top_right:
 	# Go from top_right to bottom_left
-	tween.interpolate_property(sprite, "position", start_go_position.position, arrived_go_position.position, 4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "position", start_go_position.position, arrived_go_position.position, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	is_arrived_to_bottom_left = true
 	is_arrived_to_top_right = false
 	$Tween.start()
 	#else:
-		#tween.interpolate_property(sprite, "position", start_return_position.position, arrived_return_position.position, 4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		#tween.interpolate_property(self, "position", start_return_position.position, arrived_return_position.position, 4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		#is_arrived_to_bottom_left = false
 		#is_arrived_to_top_right = true
 		#$Tween.start()
@@ -38,8 +38,5 @@ func _ready():
 
 
 func _on_Car_area_entered(area: Area2D):
-	print("CAR AREA ENTERED")
-	print(area.get_groups())
 	if area.is_in_group("sheeps"):
-		print("SHEEPS DIEEEE")
 		area.die()
