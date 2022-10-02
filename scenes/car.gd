@@ -15,6 +15,7 @@ var is_arrived_to_bottom_left := false
 var is_arrived_to_top_right := true
 
 func lets_go():
+	self.show()
 	#if not is_arrived_to_bottom_left and is_arrived_to_top_right:
 	# Go from top_right to bottom_left
 	tween.interpolate_property(self, "position", start_go_position.position, arrived_go_position.position, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
