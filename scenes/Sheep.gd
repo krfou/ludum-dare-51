@@ -13,6 +13,7 @@ var is_running_away := false
 # position du mouton moins position du chien dans vecteur
 
 onready var move_timer := $MoveTimer as Timer
+onready var sprite := get_node("AnimatedSprite")
 
 func is_scared(dog_position: Vector2) -> void:
 	var run_away_vector = Vector2(position.x - dog_position.x, position.y - dog_position.y)
@@ -83,7 +84,6 @@ func die():
 func fall():
 	$AnimatedSprite.animation = "fall"
 	var current_scale = self.scale.x
-	$Tween.interpolate_property($AnimatedSprite, "scale", current_scale, 0, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	self.is_alive = false
 
@@ -95,3 +95,6 @@ func _ready():
 	var texture = $AnimatedSprite.frames.get_frame("leap", 0)
 	texture_size = texture.get_size()
 	$AnimatedSprite.animation = "eat"
+	var tween = get_node("Tween")
+	tween.interpolate_property(sprite, "scale", scale, Vector2.ZERO, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(sprite, "position", Vector2.ZERO, position, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

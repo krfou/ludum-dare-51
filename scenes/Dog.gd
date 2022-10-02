@@ -32,8 +32,8 @@ func get_input():
 func _process(delta: float) -> void:
 	get_input()
 	position += velocity * delta
-	position.x = clamp(position.x, texture_size.x / 2, screensize.x - texture_size.x / 2)
-	position.y = clamp(position.y, texture_size.y / 2, screensize.y - texture_size.y / 2)
+	position.x = clamp(position.x,  texture_size.x / 4, screensize.x - texture_size.x / 4)
+	position.y = clamp(position.y,  texture_size.y / 4, screensize.y - texture_size.y / 4)
 
 func start(pos):
 	set_process(true)
